@@ -1,0 +1,41 @@
+h1 {
+		color: #ff0000;
+        font-family: Cambria;
+        text-shadow: 1px 1px grey;
+	}
+
+body
+{
+        background-color: #e2e1f4;
+
+}
+
+div.rcorners2 {
+  border-radius: 14px;
+  border: 2px solid #ffbaba;
+  background: #bfbdd4;
+  padding: 20px;
+  width: 500px;
+  height: 20px;
+}
+
+button {
+  border-radius: 8px;
+  /*background-color: #4CAF50; !* Green *!*/
+  /*border: none;*/
+  border-color: #ffbaba;
+  color: #ff0000;
+  padding: 5px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: underline;
+}
