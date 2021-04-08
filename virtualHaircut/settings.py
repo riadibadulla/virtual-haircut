@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hsv-xnh^up!rx0#*ndca(#5(_gx!@ny$f_0+*x7nz1j(02cgca'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://glacial-taiga-33910.herokuapp.com/', '127.0.0.1']
 
