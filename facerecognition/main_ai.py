@@ -20,21 +20,11 @@ def run_landmark_detection():
     image = face_recognition.load_image_file(IMAGE_DIR)
 
     try:
-        if hasattr(image, '_getexif'):  # only present in JPEGs
-            for orientation in PIL.ExifTags.TAGS.keys():
-                if PIL.ExifTags.TAGS[orientation] == 'Orientation':
-                    break
-            e = image._getexif()  # returns None if no EXIF data
-            if e is not None:
-                exif = dict(e.items())
-                orientation = exif[orientation]
-
-                if orientation == 3:
-                    image = image.transpose(PIL.Image.ROTATE_180)
-                elif orientation == 6:
-                    image = image.transpose(PIL.Image.ROTATE_270)
-                elif orientation == 8:
-                    image = image.transpose(PIL.Image.ROTATE_90)
+        if image._getexif():
+            exif = dict((PIL.ExifTags.TAGS[k], v) for k, v in image._getexif().items() if k in PIL.ExifTags.TAGS)
+            if not exif['Orientation']:
+                img = image.rotate(90, expand=True)
+            img.thumbnail((1000, 1000), PIL.Image.ANTIALIAS)
     except:
         pass
 
