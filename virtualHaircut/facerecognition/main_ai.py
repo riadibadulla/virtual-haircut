@@ -4,8 +4,11 @@ import PIL.ImageDraw
 import os
 
 def delete_images():
-    IMAGE_DIR = "facerecognition/static/images/" + os.listdir("facerecognition/static/images/")[-1]
-    os.remove(IMAGE_DIR)
+    try:
+        IMAGE_DIR = "facerecognition/static/images/" + os.listdir("facerecognition/static/images/")[-1]
+        os.remove(IMAGE_DIR)
+    except:
+        pass
 
 
 def run_landmark_detection():
