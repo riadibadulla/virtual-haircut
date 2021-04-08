@@ -4,6 +4,7 @@ from . import main_ai
 
 def home(request):
     if request.method == 'POST' and request.FILES['myfile']:
+        main_ai.delete_images()
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
         filename = fs.save('facerecognition/static/images/1.jpg', myfile)
