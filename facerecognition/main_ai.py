@@ -2,6 +2,7 @@ import face_recognition
 import PIL.Image
 import PIL.ImageDraw
 import os
+import PIL.ExifTags
 
 def delete_images():
     try:
@@ -17,6 +18,26 @@ def run_landmark_detection():
 
     # Load the jpg file into a numpy array
     image = face_recognition.load_image_file(IMAGE_DIR)
+
+    try:
+        if hasattr(image, '_getexif'):  # only present in JPEGs
+            for orientation in PIL.ExifTags.TAGS.keys():
+                if PIL.ExifTags.TAGS[orientation] == 'Orientation':
+                    break
+            e = image._getexif()  # returns None if no EXIF data
+            if e is not None:
+                exif = dict(e.items())
+                orientation = exif[orientation]
+
+                if orientation == 3:
+                    image = image.transpose(PIL.Image.ROTATE_180)
+                elif orientation == 6:
+                    image = image.transpose(PIL.Image.ROTATE_270)
+                elif orientation == 8:
+                    image = image.transpose(PIL.Image.ROTATE_90)
+    except:
+        pass
+
 
     # Find all facial features in all the faces in the image
     face_landmarks_list = face_recognition.face_landmarks(image)
