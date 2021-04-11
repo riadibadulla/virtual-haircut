@@ -1,33 +1,26 @@
+{%extends 'base.html'%}
+{%block content%}
 {% load static %}
-<head>
-    <link rel="stylesheet" type="text/css" href="{%static 'style.css'%}" />
-    <title>Virtual Haircut app</title>
-</head>
 
-<body>
-
-<center>
-    <a href="{% url 'home' %}"><h1>Face Highlight Detector</h1></a>
-    <div class="rcorners2">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="file" name="myfile">
-            <button type="submit">Upload</button>
-        </form>
-
-<!--       {% if uploaded_file_url %}-->
-<!--            <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>-->
-<!--       {% endif %}-->
-
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-7 col-sm5 text-center">
+            <a href="{% url 'home' %}" class="btn btn-link text-decoration-none"><h1 class="text-danger font-weight-bold">Face Highlight Detector</h1></a>
+            <div class=" border border-danger rounded mt-5 mx-5">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="myfile">
+                    <button type="submit" class="btn btn-danger my-4">Upload</button>
+                </form>
+            </div>
+            {% if uploaded_file_url %}
+            <div class="image">
+                <img src="{%static 'images/1.jpg' %}" alt="Face" height="500" class="rounded">
+            </div>
+            {% endif %}
+        </div>
     </div>
+</div>
 
-    {% if uploaded_file_url %}
-    <div class="image">
-        <img src="{%static 'images/1.jpg' %}" alt="Face" height="500">
-    </div>
-    {% endif %}
 
-</center>
-
-</body>
-
+{%endblock content%}
