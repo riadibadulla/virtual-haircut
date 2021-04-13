@@ -14,7 +14,7 @@ Jinja2==2.11.3
 MarkupSafe==1.1.1
 numpy==1.19.5
 opencv-contrib-python==4.5.1.48
-opencv-python==4.5.1.48
+opencv-python--headless
 Pillow==8.2.0
 psycopg2==2.8.6
 pycparser==2.20
