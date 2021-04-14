@@ -38,7 +38,7 @@ def mid_eyes(face_landmarks_list):
     return point
 
 def paste_sunglases(image,face_landmarks_list, dist):
-    sunglasses = cv2.imread('facerecognition\static\haircuts\sunglasses.png', -1)
+    sunglasses = cv2.imread('facerecognition/static/haircuts/sunglasses.png', -1)
     dw = dist
     dh = int(dw * 0.50)
     glassesResize = cv2.resize(sunglasses, (dw, dh))
