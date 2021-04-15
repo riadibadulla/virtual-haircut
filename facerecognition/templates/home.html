@@ -1,18 +1,29 @@
 {%extends 'base.html'%}
 {%block content%}
 {% load static %}
+<header>
+    <a href="{% url 'home' %}" class="btn btn-link text-decoration-none"><h1 class="text-danger font-weight-bold">Face Highlight Detector</h1></a>
+</header>
+<div class="container-fluid">
 
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-7 col-sm5 text-center">
-            <a href="{% url 'home' %}" class="btn btn-link text-decoration-none"><h1 class="text-danger font-weight-bold">Face Highlight Detector</h1></a>
-            <div class=" border border-3 border-danger rounded mt-5 mx-5">
+    <div class="row  mt-5">
+        <div class="col mr-5">
+            <div class=" border border-3 border-danger rounded mt-5 ml-5">
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <input type="file" name="myfile">
                     <button type="submit" class="btn btn-danger my-4">Upload</button>
                 </form>
             </div>
+        </div>
+        <div class="col">
+            <input type="radio" class="btn-check" name="options-outlined" id="black-sunglasses" autocomplete="off" checked>
+            <label class="btn btn-outline-danger mb-2" for="black-sunglasses">Black Sunglasses</label><br>
+
+            <input type="radio" class="btn-check" name="options-outlined" id="red-sunglasses" autocomplete="off">
+            <label class="btn btn-outline-danger" for="red-sunglasses">Red Sunglasses</label>
+        </div>
+        <div class="col-md-7 col-sm5 text-center">
             {% if uploaded_file_url %}
             <div class="image">
                 <img src="{%static 'images/1.jpg' %}" alt="Face" height="500" class="rounded">
