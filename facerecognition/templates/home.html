@@ -8,11 +8,12 @@
 
     <div class="row  mt-5">
         <div class="col mr-5">
-            <div class=" border border-3 border-danger rounded mt-5 ml-5">
-                <form method="post" enctype="multipart/form-data">
+            <div class=" border border-3 border-danger rounded ml-5">
+                <p class="lead mt-2 mx-1">Please upload the photo of your face</p>
+                <form method="post" enctype="multipart/form-data" class="my-3 mx-2">
                     {% csrf_token %}
                     <input type="file" name="myfile">
-                    <button type="submit" class="btn btn-danger my-4">Upload</button>
+                    <button type="submit" class="btn btn-danger my-2">Upload</button>
                 </form>
             </div>
         </div>
